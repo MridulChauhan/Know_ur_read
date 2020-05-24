@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "700081596512",
+    "firebase_url": "https://know-ur-read.firebaseio.com",
+    "project_id": "know-ur-read",
+    "storage_bucket": "know-ur-read.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700081596512:android:33ad42864cf23f5e53fb05",
+        "android_client_info": {
+          "package_name": "mridulchauhan.knowurread"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700081596512-mdmemih623bmf678aqoj5gjuu2om40ng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz4C7IR6Eo4zBBw7nxhZqYA8YHT6sXttQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700081596512-mdmemih623bmf678aqoj5gjuu2om40ng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
