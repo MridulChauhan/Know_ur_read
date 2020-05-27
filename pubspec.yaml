@@ -38,6 +38,8 @@ dependencies:
   smooth_page_indicator: ^0.1.5
   firebase_ml_vision: ^0.9.3+8
   image_picker: ^0.6.6+4
+  showcaseview: ^0.1.5
+  shared_preferences: ^0.5.7+3
 
 dev_dependencies:
   flutter_test:
