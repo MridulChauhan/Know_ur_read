@@ -1,11 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knowurread/custom_widgets/rounded_button.dart';
 import 'package:knowurread/other_files/constants.dart';
 import 'package:knowurread/main_screens/login_page.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class WelcomeScreen3 extends StatelessWidget {
+class WelcomeScreen3 extends StatefulWidget {
   static const String id = 'welcome_screen3';
+
+  @override
+  _WelcomeScreen3State createState() => _WelcomeScreen3State();
+}
+
+class _WelcomeScreen3State extends State<WelcomeScreen3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +24,7 @@ class WelcomeScreen3 extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 120,
-              backgroundColor: Colors.redAccent,
+              backgroundColor: Colors.black26,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(150),
                 child: Image.asset('images/sentiment.png'),
@@ -32,30 +39,21 @@ class WelcomeScreen3 extends StatelessWidget {
               style: kDescriptionStyle,
               textAlign: TextAlign.center,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FlatButton(
-                  child: Icon(
-                    FontAwesomeIcons.arrowCircleLeft,
-                    size: 50,
-                    color: Colors.tealAccent,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                FlatButton(
-                  child: Icon(
-                    FontAwesomeIcons.arrowCircleRight,
-                    size: 50,
-                    color: Colors.tealAccent,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginPage.id);
-                  },
-                ),
-              ],
+            RoundedButton(
+              text: 'Skip',
+              onPress: () {
+                Navigator.pushNamed(context, LoginPage.id);
+              },
+              colour: Colors.white10,
+              minWidth: 150,
+            ),
+            Container(
+              child: SmoothPageIndicator(
+                controller: controller, // PageController
+                count: pages.length,
+                effect: WormEffect(
+                    activeDotColor: Colors.white), // your preferred effect
+              ),
             ),
           ],
         ),

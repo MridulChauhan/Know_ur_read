@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:knowurread/welcome_screens/welcome_screen2.dart';
+import 'package:knowurread/custom_widgets/rounded_button.dart';
+import 'package:knowurread/main_screens/login_page.dart';
 import 'package:knowurread/other_files/constants.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class WelcomeScreen1 extends StatelessWidget {
+class WelcomeScreen1 extends StatefulWidget {
   static const String id = 'welcome_screen1';
+
+  @override
+  _WelcomeScreen1State createState() => _WelcomeScreen1State();
+}
+
+class _WelcomeScreen1State extends State<WelcomeScreen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +23,7 @@ class WelcomeScreen1 extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 120,
-              backgroundColor: Colors.redAccent,
+              backgroundColor: Colors.black26,
               child: Image.asset(
                 'images/news.png',
                 height: 180,
@@ -31,15 +38,21 @@ class WelcomeScreen1 extends StatelessWidget {
               style: kDescriptionStyle,
               textAlign: TextAlign.center,
             ),
-            FlatButton(
-              child: Icon(
-                FontAwesomeIcons.arrowCircleRight,
-                size: 50,
-                color: Colors.tealAccent,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, WelcomeScreen2.id);
+            RoundedButton(
+              text: 'Skip',
+              onPress: () {
+                Navigator.pushNamed(context, LoginPage.id);
               },
+              colour: Colors.white10,
+              minWidth: 150,
+            ),
+            Container(
+              child: SmoothPageIndicator(
+                controller: controller, // PageController
+                count: pages.length,
+                effect: WormEffect(
+                    activeDotColor: Colors.white), // your preferred effect
+              ),
             ),
           ],
         ),

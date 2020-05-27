@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:knowurread/main_screens/features_screen.dart';
 import 'package:knowurread/main_screens/login_page.dart';
-import 'package:knowurread/main_screens/main_screen.dart';
+import 'package:knowurread/main_screens/text_scanner_screen.dart';
+import 'package:knowurread/other_files/navigation.dart';
 import 'package:knowurread/welcome_screens/welcome_screen1.dart';
 import 'package:knowurread/welcome_screens/welcome_screen2.dart';
 import 'package:knowurread/welcome_screens/welcome_screen3.dart';
+import 'package:knowurread/welcome_screens/welcome_screen4.dart';
+import 'package:knowurread/main_screens/text_summarizer_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,14 +21,20 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
     return MaterialApp(
-      initialRoute: WelcomeScreen1.id,
+      home: Scaffold(
+        body: PageViewNavigation(),
+      ),
       routes: {
         WelcomeScreen1.id: (context) => WelcomeScreen1(),
         WelcomeScreen2.id: (context) => WelcomeScreen2(),
         WelcomeScreen3.id: (context) => WelcomeScreen3(),
+        WelcomeScreen4.id: (context) => WelcomeScreen4(),
         LoginPage.id: (context) => LoginPage(),
-        MainScreen.id: (context) => MainScreen(),
+        FeaturesPage.id: (context) => FeaturesPage(),
+        TextScannerScreen.id: (context) => TextScannerScreen(),
+        TextSummarizerScreen.id: (context) => TextSummarizerScreen(),
       },
     );
   }

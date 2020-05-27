@@ -4,14 +4,14 @@ import 'package:knowurread/main_screens/login_page.dart';
 import 'package:knowurread/other_files/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class WelcomeScreen2 extends StatefulWidget {
-  static const String id = 'welcome_screen2';
+class WelcomeScreen4 extends StatefulWidget {
+  static const String id = 'welcome_screen4';
 
   @override
-  _WelcomeScreen2State createState() => _WelcomeScreen2State();
+  _WelcomeScreen4State createState() => _WelcomeScreen4State();
 }
 
-class _WelcomeScreen2State extends State<WelcomeScreen2> {
+class _WelcomeScreen4State extends State<WelcomeScreen4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,16 +24,10 @@ class _WelcomeScreen2State extends State<WelcomeScreen2> {
             CircleAvatar(
                 radius: 120,
                 backgroundColor: Colors.black26,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(200),
-                  child: Image.asset(
-                    'images/app_icon.png',
-                    height: 150,
-                  ),
-                )),
-            Text('know ur read', style: kTitleStyle),
+                child: Image.asset('images/ocr.png')),
+            Text('Text Scanning (OCR)', style: kTitleStyle),
             Text(
-              "A tool to help you know what you read and share",
+              "Just upload a screenshot/image or just use your camera to perform text scanning",
               style: kDescriptionStyle,
               textAlign: TextAlign.center,
             ),

@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:knowurread/main_screens/features_screen.dart';
 import 'package:knowurread/other_files/constants.dart';
 import 'package:knowurread/custom_widgets/rounded_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:knowurread/main_screens/main_screen.dart';
-import 'package:knowurread/other_files/alert_generation.dart';
+import 'package:knowurread/other_files/sign_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -21,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   String password;
   bool _visible = true;
   bool showSpinner = false;
-  final _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   void toggleVisibility() {
@@ -32,15 +30,13 @@ class _LoginPageState extends State<LoginPage> {
 
   void enableSpinner() {
     setState(() {
-      showSpinner = true;
+      if (email != null && password != null) showSpinner = true;
       _visible = !_visible;
     });
   }
 
   void disableSpinner() {
-    setState(() {
-      showSpinner = false;
-    });
+    setState(() => showSpinner = false);
   }
 
   @override
@@ -72,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                         opacity: _visible ? 1.0 : 0.1,
                         duration: Duration(milliseconds: 500),
                         child: Image.asset(
-                          'images/search.jpg',
+                          'images/app_icon.png',
                           height: 80.0,
                           width: 80.0,
                         ),
@@ -153,17 +149,8 @@ class _LoginPageState extends State<LoginPage> {
                                 text: 'Login',
                                 onPress: () async {
                                   enableSpinner();
-                                  try {
-                                    AuthResult regUser =
-                                        await _auth.signInWithEmailAndPassword(
-                                            email: email, password: password);
-                                    if (regUser != null)
-                                      Navigator.pushNamed(
-                                          context, MainScreen.id);
-                                  } catch (error) {
-                                    AlertGeneration()
-                                        .generateAlert(error, context);
-                                  }
+                                  await SignInMethods()
+                                      .loginUser(context, email, password);
                                   disableSpinner();
                                 },
                               ),
@@ -173,20 +160,9 @@ class _LoginPageState extends State<LoginPage> {
                                 colour: Colors.orange[900],
                                 onPress: () async {
                                   enableSpinner();
-                                  try {
-                                    final newUser = await _auth
-                                        .createUserWithEmailAndPassword(
-                                            email: email, password: password);
-                                    if (newUser != null) {
-                                      Navigator.pushNamed(
-                                          context, MainScreen.id);
-                                      disableSpinner();
-                                    }
-                                  } catch (error) {
-                                    AlertGeneration()
-                                        .generateAlert(error, context);
-                                    disableSpinner();
-                                  }
+                                  await SignInMethods()
+                                      .registerUser(context, email, password);
+                                  disableSpinner();
                                 },
                                 text: 'Register',
                               ),
@@ -194,8 +170,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           RoundedButton(
                             colour: Colors.indigoAccent,
-                            onPress: () {
+                            onPress: () async {
                               toggleVisibility();
+                              enableSpinner();
+                              await SignInMethods()
+                                  .signInWithGoogle()
+                                  .whenComplete(() => Navigator.pushNamed(
+                                      context, FeaturesPage.id));
+                              disableSpinner();
                             },
                             text: 'Sign in with Google',
                           ),
