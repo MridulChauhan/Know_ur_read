@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:knowurread/other_files/sign_in.dart';
+import 'package:knowurread/main_screens/login_page.dart';
+import 'package:knowurread/services/sign_in.dart';
 
 class SignOutButton extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class SignOutButton extends StatelessWidget {
       icon: Icon(FontAwesomeIcons.signOutAlt),
       onPressed: () {
         SignInMethods().signOutGoogle();
-        Navigator.pop(context);
+        Navigator.pushNamed(context, LoginPage.id);
       },
     );
   }

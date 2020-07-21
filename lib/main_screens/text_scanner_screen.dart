@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:knowurread/custom_widgets/rounded_button.dart';
 import 'package:knowurread/custom_widgets/sign_out_button.dart';
-import 'package:knowurread/other_files/is_first_launch.dart';
-import 'package:knowurread/other_files/text_scanner.dart';
+import 'package:knowurread/services/is_first_launch.dart';
+import 'package:knowurread/services/text_scanner.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class TextScannerScreen extends StatefulWidget {
@@ -76,12 +77,12 @@ class _TextScannerScreenState extends State<TextScannerScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: 20),
+                  SizedBox(height: ScreenUtil().setHeight(20)),
                   pickedImage != null
                       ? Center(
                           child: Container(
-                            height: 200.0,
-                            width: 200.0,
+                            height: ScreenUtil().setHeight(200),
+                            width: ScreenUtil().setWidth(200),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: FileImage(pickedImage),
@@ -90,7 +91,7 @@ class _TextScannerScreenState extends State<TextScannerScreen> {
                           ),
                         )
                       : Container(),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: ScreenUtil().setHeight(10)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -110,7 +111,7 @@ class _TextScannerScreenState extends State<TextScannerScreen> {
                           },
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: ScreenUtil().setWidth(10)),
                       Showcase(
                         title: 'Camera',
                         description: 'Press to use camera to take a picture',

@@ -3,12 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:knowurread/main_screens/features_screen.dart';
 import 'package:knowurread/main_screens/login_page.dart';
 import 'package:knowurread/main_screens/text_scanner_screen.dart';
-import 'package:knowurread/other_files/navigation.dart';
+import 'package:knowurread/services/navigation.dart';
 import 'package:knowurread/welcome_screens/welcome_screen1.dart';
 import 'package:knowurread/welcome_screens/welcome_screen2.dart';
 import 'package:knowurread/welcome_screens/welcome_screen3.dart';
 import 'package:knowurread/welcome_screens/welcome_screen4.dart';
 import 'package:knowurread/main_screens/text_summarizer_screen.dart';
+import 'package:knowurread/main_screens/sentiment_analysis_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     ]);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: PageViewNavigation(),
       ),
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
         FeaturesPage.id: (context) => FeaturesPage(),
         TextScannerScreen.id: (context) => TextScannerScreen(),
         TextSummarizerScreen.id: (context) => TextSummarizerScreen(),
+        SentimentAnalysisScreen.id: (context) => SentimentAnalysisScreen(),
       },
     );
   }

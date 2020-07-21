@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:knowurread/custom_widgets/rounded_button.dart';
 import 'package:knowurread/main_screens/login_page.dart';
-import 'package:knowurread/other_files/constants.dart';
+import 'package:knowurread/utils/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomeScreen2 extends StatefulWidget {
@@ -15,9 +16,11 @@ class _WelcomeScreen2State extends State<WelcomeScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: KnowUrReadConst.kWelcomeScrnBackgrndColor,
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+        padding: EdgeInsets.symmetric(
+            vertical: KnowUrReadConst.kVerticalPadding,
+            horizontal: KnowUrReadConst.kHorizontalPadding * 0.5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -27,14 +30,14 @@ class _WelcomeScreen2State extends State<WelcomeScreen2> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(200),
                   child: Image.asset(
-                    'images/app_icon.png',
-                    height: 150,
+                    'assets/app_icon.png',
+                    height: ScreenUtil().setHeight(150),
                   ),
                 )),
-            Text('know ur read', style: kTitleStyle),
+            Text('know ur read', style: KnowUrReadConst.kTitleStyle),
             Text(
               "A tool to help you know what you read and share",
-              style: kDescriptionStyle,
+              style: KnowUrReadConst.kDescriptionStyle,
               textAlign: TextAlign.center,
             ),
             RoundedButton(
@@ -43,12 +46,12 @@ class _WelcomeScreen2State extends State<WelcomeScreen2> {
                 Navigator.pushNamed(context, LoginPage.id);
               },
               colour: Colors.white10,
-              minWidth: 150,
+              minWidth: ScreenUtil().setWidth(150),
             ),
             Container(
               child: SmoothPageIndicator(
-                controller: controller, // PageController
-                count: pages.length,
+                controller: KnowUrReadConst.controller, // PageController
+                count: KnowUrReadConst.pages.length,
                 effect: WormEffect(
                     activeDotColor: Colors.white), // your preferred effect
               ),

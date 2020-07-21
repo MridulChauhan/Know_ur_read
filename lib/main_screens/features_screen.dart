@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:knowurread/custom_widgets/sign_out_button.dart';
 import 'package:knowurread/main_screens/text_scanner_screen.dart';
 import 'package:knowurread/main_screens/text_summarizer_screen.dart';
-import 'package:knowurread/other_files/constants.dart';
-import 'package:knowurread/other_files/is_first_launch.dart';
+import 'package:knowurread/utils/constants.dart';
+import 'package:knowurread/services/is_first_launch.dart';
 import 'package:showcaseview/showcase.dart';
 import 'package:showcaseview/showcase_widget.dart';
+import 'package:knowurread/main_screens/sentiment_analysis_screen.dart';
 
 class FeaturesPage extends StatefulWidget {
   static const String id = 'features_page';
@@ -68,7 +69,8 @@ class _FeaturesPageState extends State<FeaturesPage> {
                     child: Center(
                       child: Text(
                         'Know ur Read \n Features',
-                        style: kTitleStyle.copyWith(color: Colors.grey[900]),
+                        style: KnowUrReadConst.kTitleStyle
+                            .copyWith(color: Colors.grey[900]),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -78,10 +80,10 @@ class _FeaturesPageState extends State<FeaturesPage> {
                   ),
                   SizedBox(height: 10),
                   ListTile(
-                    leading: Image.asset('images/ocr.png'),
+                    leading: Image.asset('assets/ocr.png'),
                     title: Text(
                       'Text Scanner',
-                      style: kDescriptionStyle,
+                      style: KnowUrReadConst.kDescriptionStyle,
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, TextScannerScreen.id);
@@ -90,15 +92,29 @@ class _FeaturesPageState extends State<FeaturesPage> {
                   SizedBox(height: 20),
                   ListTile(
                     leading: Image.asset(
-                      'images/summarizer.jpg',
+                      'assets/news.png',
                       width: 50,
                     ),
                     title: Text(
-                      'Text Summariser',
-                      style: kDescriptionStyle,
+                      'Caption Generation',
+                      style: KnowUrReadConst.kDescriptionStyle,
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, TextSummarizerScreen.id);
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  ListTile(
+                    leading: Image.asset(
+                      'assets/sentiment.png',
+                      width: 50,
+                    ),
+                    title: Text(
+                      'Sentiment Analysis',
+                      style: KnowUrReadConst.kDescriptionStyle,
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, SentimentAnalysisScreen.id);
                     },
                   ),
                 ],

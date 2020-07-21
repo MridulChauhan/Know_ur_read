@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knowurread/utils/constants.dart';
 
 class RoundedButton extends StatelessWidget {
   final Color colour;
@@ -11,15 +13,16 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.symmetric(
+          vertical: KnowUrReadConst.kVerticalPadding * 0.5),
       child: Material(
-        elevation: 10.0,
+        elevation: KnowUrReadConst.kElevation,
         color: colour,
         borderRadius: BorderRadius.circular(30.0),
         child: MaterialButton(
           onPressed: onPress,
           minWidth: minWidth,
-          height: 42.0,
+          height: ScreenUtil().setHeight(42),
           child: Text(
             text,
             style: TextStyle(color: Colors.white),

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:knowurread/custom_widgets/sign_out_button.dart';
 import 'package:knowurread/services/networking.dart';
 
-class TextSummarizerScreen extends StatefulWidget {
-  static const String id = 'text_summarizer_screen';
+class SentimentAnalysisScreen extends StatefulWidget {
+  static const String id = 'sentiment_analysis_screen';
   @override
-  _TextSummarizerScreenState createState() => _TextSummarizerScreenState();
+  _SentimentAnalysisScreenState createState() =>
+      _SentimentAnalysisScreenState();
 }
 
-class _TextSummarizerScreenState extends State<TextSummarizerScreen> {
+class _SentimentAnalysisScreenState extends State<SentimentAnalysisScreen> {
   void apiData() async {
     try {
       String input = "Hey there";
@@ -26,7 +27,7 @@ class _TextSummarizerScreenState extends State<TextSummarizerScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Caption Generation'),
+        title: Text('Sentiment Analysis'),
         backgroundColor: Colors.redAccent,
         leading: BackButton(),
         actions: <Widget>[
