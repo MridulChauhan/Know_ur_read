@@ -140,6 +140,13 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               child: Column(
                                 children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5.0),
+                                    child: Text(
+                                      'Try typing something !',
+                                      style: KnowUrReadConst.kDescriptionStyle,
+                                    ),
+                                  ),
                                   TrackingTextInput(
                                     label: "Email",
                                     hint: "What's your email address?",
@@ -209,10 +216,13 @@ class _LoginPageState extends State<LoginPage> {
                                   colour: Colors.lightBlue[900],
                                   text: 'Login',
                                   onPress: () async {
-                                    enableSpinner();
-                                    await SignInMethods()
-                                        .loginUser(context, email, password);
-                                    disableSpinner();
+                                    if (email != null && password != null) {
+                                      enableSpinner();
+                                      await SignInMethods()
+                                          .loginUser(context, email, password);
+                                      disableSpinner();
+                                    } else
+                                      TeddyController().playFail();
                                   },
                                 ),
                                 SizedBox(width: ScreenUtil().setWidth(10)),
@@ -220,10 +230,12 @@ class _LoginPageState extends State<LoginPage> {
                                   minWidth: ScreenUtil().setWidth(130),
                                   colour: Colors.lightBlue[900],
                                   onPress: () async {
-                                    enableSpinner();
-                                    await SignInMethods()
-                                        .registerUser(context, email, password);
-                                    disableSpinner();
+                                    if (email != null && password != null) {
+                                      enableSpinner();
+                                      await SignInMethods().registerUser(
+                                          context, email, password);
+                                      disableSpinner();
+                                    }
                                   },
                                   text: 'Register',
                                 ),

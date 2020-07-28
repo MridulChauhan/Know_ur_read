@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:knowurread/main_screens/features_screen.dart';
 import 'package:knowurread/services/alert_generation.dart';
-import 'package:knowurread/utils/teddy_controller.dart';
 
 class SignInMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -63,13 +61,11 @@ class SignInMethods {
       AuthResult regUser = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       if (regUser != null) {
-        TeddyController().play("success");
-        Timer(Duration(seconds: 2), () {
-          Navigator.pushNamed(context, FeaturesPage.id);
-        });
+        //Timer(Duration(seconds: 0), () {
+        Navigator.pushNamed(context, FeaturesPage.id);
+        //});
       }
     } catch (error) {
-      TeddyController().play("fail");
       AlertGeneration().generateAlert(error, context);
     }
     return 'User Logged In : $email';

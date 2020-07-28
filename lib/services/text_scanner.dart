@@ -25,8 +25,9 @@ class TextScanner {
           for (TextElement element in line.elements) {
             text += (element.text + " ");
           }
-          //print('\n');
+          text = text + "\n";
         }
+        text = text + "\n\n";
       }
       recognizeText.close();
       return text;

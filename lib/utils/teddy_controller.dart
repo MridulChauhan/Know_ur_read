@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'dart:ui';
-
 import 'package:flare_flutter/flare.dart';
 import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_dart/math/vec2d.dart';
@@ -127,6 +126,10 @@ class TeddyController extends FlareControls {
     } else {
       play("hands_down");
     }
+  }
+
+  void playFail() {
+    play("fail");
   }
 
   // void submitPassword() {
