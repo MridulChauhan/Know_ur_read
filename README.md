@@ -1,4 +1,4 @@
-# knowurread
+# know_ur_read
 
 A Flutter application that helps you generate insights on your content.
 
